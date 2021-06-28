@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MVC_cafe.Models.Food>
+
+@{
+    ViewBag.Title = "XemMon";
+    Layout = "~/Views/Shared/Layout_member.cshtml";
+}
+
+<style>
+    table, tr, th, td {
+        border: 1px solid #111;
+    }
+
+    tbody {
+        border-top: 2px solid #111;
+    }
+    #searchFood {
+        border: 1px solid #111;
+        height: 32px;
+        border-radius: 5px;
+    }
+</style>
+
+<hr />
+<h2>Danh sách món ăn</h2>
+
+@using (Html.BeginForm("XemMon", "Foods"))
+{
+    @Html.TextBox("searchFood")
+    <input class="btn btn-info" type="submit" value="Tìm kiếm" />
+}
+
+<h6 style="margin-bottom: 30px;"></h6>
+<table class="table">
+    <tr>
+        <th>
+            Tên món ăn
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Thể loại
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodCategory.FoodCategory_name)
+            </td>
+        </tr>
+    }
+
+</table>
+

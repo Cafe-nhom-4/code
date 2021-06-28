@@ -1,0 +1,35 @@
+﻿body {
+    font-family: Arial;
+}
+
+.wrapper {
+    width: 70%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.wrapper_item {
+    cursor: pointer;
+    height: 80px;
+    background-color: aqua;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+}
+
+    .wrapper_item > p {
+        font-size: 20px;
+    }
+
+.table_content {
+    width: 30%;
+    background: #808080;
+    height: 100%;
+}
+
+.table_form {
+    height: 100%;
+    width: 100%;
+}

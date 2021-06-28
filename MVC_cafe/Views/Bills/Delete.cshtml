@@ -1,0 +1,65 @@
+﻿@model MVC_cafe.Models.Bill
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateChekIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateChekIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateChekOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateChekOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableFood.TableFood_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableFood.TableFood_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

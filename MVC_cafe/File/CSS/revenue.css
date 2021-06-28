@@ -1,0 +1,24 @@
+﻿body {
+}
+
+.revenue_content {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.revenue_item {
+    cursor: pointer;
+    height: 120px;
+    border-radius: 5px;
+    border-top: 5px solid #ff6a00;
+    background-color: #ffffff;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+}
+
+    .revenue_item > h3 {
+        font-weight: 600;
+    }

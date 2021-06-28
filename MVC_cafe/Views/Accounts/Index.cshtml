@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MVC_cafe.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<style>
+    table, tr, th, td {
+        border: 1px solid #111;
+    }
+
+    tbody {
+        border-top: 2px solid #111;
+    }
+    a{
+        color:#fff;
+        font-size:16px;
+    }
+    #search {
+        border: 1px solid #111;
+        height: 32px;
+        border-radius: 5px;
+    }
+</style>
+<p class="btn btn-default" style="background: #5a69fa;color:#fff">
+    <i class="fas fa-plus"></i>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<hr />
+<h2 style="font-weight:600">Danh sách thành viên</h2>
+<div style="background:#fff;border-radius:7px;padding:10px">
+
+    @using (Html.BeginForm("Index", "Accounts"))
+    {
+        @Html.TextBox("search") <input class="btn btn-info" type="submit" value="Tìm kiếm" />
+    }
+
+    <h6 style="margin-bottom: 30px;"></h6>
+    <table class="table">
+        <tr>
+            <th>
+                UserName
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Tên đầy đủ
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Điện thoại
+            </th>
+            <th>
+                Thông tin
+            </th>
+            <th>
+                Phân quyền
+            </th>
+            <th>Thao tác</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassWord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.RoleName)
+                </td>
+                <td>
+                    <p class="btn btn-primary" style="background: #2cc455;color:#fff!important">
+                        <i class="fas fa-edit"></i>
+                        @Html.ActionLink("Cập nhật", "Edit", new { id = item.id })
+                    </p> |
+                    <p class="btn btn-default" style="background: #f7c30f;color: #fff !important">
+                        <i class="fas fa-trash-alt"></i>
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

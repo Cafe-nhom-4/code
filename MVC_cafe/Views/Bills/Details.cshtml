@@ -1,0 +1,59 @@
+﻿@model MVC_cafe.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateChekIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateChekIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateChekOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateChekOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableFood.TableFood_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableFood.TableFood_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Bill_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

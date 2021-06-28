@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="46b0fed79d9a4d3ea732f3944eefade7" Name="Diagram1">
+        <EntityTypeShape EntityType="myCafeModel.Account" Width="1.5" PointX="4.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.Bill" Width="1.5" PointX="6.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.BillInfo" Width="1.5" PointX="6.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.Food" Width="1.5" PointX="3.875" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.FoodCategory" Width="1.5" PointX="1.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.Role" Width="1.5" PointX="1.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.sysdiagram" Width="1.5" PointX="9" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCafeModel.TableFood" Width="1.5" PointX="9" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="myCafeModel.FK__Account__idRole__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__Bill__idAccount__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__BillInfo__idAcco__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__Bill__inTable__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__BillInfo__idBill__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__BillInfo__idFood__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__BillInfo__idTabl__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="myCafeModel.FK__Food__idCategory__267ABA7A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

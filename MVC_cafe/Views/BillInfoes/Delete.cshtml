@@ -1,0 +1,64 @@
+﻿@model MVC_cafe.Models.BillInfo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn có đồng ý xóa hay không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.count)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill.Bill_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill.Bill_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Food.Food_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Food.Food_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableFood.TableFood_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableFood.TableFood_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <div class="btn btn-default">@Html.ActionLink("Quay lại", "Index")</div>           
+        </div>
+    }
+</div>

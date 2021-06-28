@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="idRole" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Arena">
+    <Key>
+      <PropertyRef Name="Arena_id" />
+    </Key>
+    <Property Name="Arena_id" Type="int" Nullable="false" />
+    <Property Name="ArenaName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="Bill_id" />
+    </Key>
+    <Property Name="Bill_id" Type="int" Nullable="false" />
+    <Property Name="DateChekIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateChekOut" Type="nvarchar" MaxLength="50" />
+    <Property Name="inTable" Type="int" />
+    <Property Name="idAccount" Type="int" />
+    <Property Name="idKM" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BillInfo">
+    <Key>
+      <PropertyRef Name="BillInfo_id" />
+    </Key>
+    <Property Name="BillInfo_id" Type="int" Nullable="false" />
+    <Property Name="idBill" Type="int" />
+    <Property Name="idFood" Type="int" />
+    <Property Name="idAccount" Type="int" />
+    <Property Name="count" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="int" />
+    <Property Name="idTable" Type="int" />
+  </EntityType>
+  <EntityType Name="DVT">
+    <Key>
+      <PropertyRef Name="DVT_id" />
+    </Key>
+    <Property Name="DVT_id" Type="int" Nullable="false" />
+    <Property Name="DVT_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descreption" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="Food_id" />
+    </Key>
+    <Property Name="Food_id" Type="int" Nullable="false" />
+    <Property Name="Food_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="idCategory" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="idDVT" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FoodCategory">
+    <Key>
+      <PropertyRef Name="FoodCategory_id" />
+    </Key>
+    <Property Name="FoodCategory_id" Type="int" Nullable="false" />
+    <Property Name="FoodCategory_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Descreption" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Role_id" />
+    </Key>
+    <Property Name="Role_id" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TableFood">
+    <Key>
+      <PropertyRef Name="TableFood_id" />
+    </Key>
+    <Property Name="TableFood_id" Type="int" Nullable="false" />
+    <Property Name="TableFood_name" Type="int" />
+    <Property Name="idArena" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="idBill" Type="int" />
+  </EntityType>
+  <Association Name="FK__Account__idRole__5CD6CB2B">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Role_id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="idRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__idAccount__5FB337D6">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__inTable__60A75C0F">
+    <End Role="TableFood" Type="Self.TableFood" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableFood">
+        <PropertyRef Name="TableFood_id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="inTable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillInfo__idAcco__6383C8BA">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillInfo__idBill__6477ECF3">
+    <End Role="Bill" Type="Self.Bill" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bill">
+        <PropertyRef Name="Bill_id" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idBill" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillInfo__idFood__656C112C">
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="Food_id" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillInfo__idTabl__66603565">
+    <End Role="TableFood" Type="Self.TableFood" Multiplicity="0..1" />
+    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableFood">
+        <PropertyRef Name="TableFood_id" />
+      </Principal>
+      <Dependent Role="BillInfo">
+        <PropertyRef Name="idTable" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Food__idCategory__59FA5E80">
+    <End Role="FoodCategory" Type="Self.FoodCategory" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodCategory">
+        <PropertyRef Name="FoodCategory_id" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="idCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Food__idDVT__59063A47">
+    <End Role="DVT" Type="Self.DVT" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DVT">
+        <PropertyRef Name="DVT_id" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="idDVT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TableFood__idAre__4316F928">
+    <End Role="Arena" Type="Self.Arena" Multiplicity="0..1" />
+    <End Role="TableFood" Type="Self.TableFood" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arena">
+        <PropertyRef Name="Arena_id" />
+      </Principal>
+      <Dependent Role="TableFood">
+        <PropertyRef Name="idArena" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CafeModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Arena" EntityType="Self.Arena" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillInfo" EntityType="Self.BillInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DVT" EntityType="Self.DVT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodCategory" EntityType="Self.FoodCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableFood" EntityType="Self.TableFood" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__idRole__5CD6CB2B" Association="Self.FK__Account__idRole__5CD6CB2B">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__idAccount__5FB337D6" Association="Self.FK__Bill__idAccount__5FB337D6">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__inTable__60A75C0F" Association="Self.FK__Bill__inTable__60A75C0F">
+      <End Role="TableFood" EntitySet="TableFood" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillInfo__idAcco__6383C8BA" Association="Self.FK__BillInfo__idAcco__6383C8BA">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillInfo__idBill__6477ECF3" Association="Self.FK__BillInfo__idBill__6477ECF3">
+      <End Role="Bill" EntitySet="Bill" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillInfo__idFood__656C112C" Association="Self.FK__BillInfo__idFood__656C112C">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillInfo__idTabl__66603565" Association="Self.FK__BillInfo__idTabl__66603565">
+      <End Role="TableFood" EntitySet="TableFood" />
+      <End Role="BillInfo" EntitySet="BillInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Food__idCategory__59FA5E80" Association="Self.FK__Food__idCategory__59FA5E80">
+      <End Role="FoodCategory" EntitySet="FoodCategory" />
+      <End Role="Food" EntitySet="Food" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Food__idDVT__59063A47" Association="Self.FK__Food__idDVT__59063A47">
+      <End Role="DVT" EntitySet="DVT" />
+      <End Role="Food" EntitySet="Food" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TableFood__idAre__4316F928" Association="Self.FK__TableFood__idAre__4316F928">
+      <End Role="Arena" EntitySet="Arena" />
+      <End Role="TableFood" EntitySet="TableFood" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

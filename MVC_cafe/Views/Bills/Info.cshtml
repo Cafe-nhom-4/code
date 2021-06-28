@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MVC_cafe.Models.Bill>
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<style>
+    table, tr, th, td {
+        border: 1px solid #111;
+    }
+
+    tbody {
+        border-top: 2px solid #111;
+    }
+
+    a {
+        color: #fff;
+        font-size: 16px;
+    }
+</style>
+<h2>Xem hóa đơn</h2>
+
+<p class="btn btn-default" style="background: #5a69fa;color:#fff">
+    <i class="fas fa-plus"></i>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateChekIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateChekOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TableFood.TableFood_name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateChekIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateChekOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TableFood.TableFood_name)
+            </td>
+            <td>
+                <p class="btn btn-primary" style="background: #2cc455;color:#fff!important">
+                    <i class="fas fa-edit"></i>
+                    @Html.ActionLink("Cập nhật", "Edit", new { id = item.Bill_id })
+                </p> |
+                <p class="btn btn-default" style="background: #f7c30f;color: #fff !important">
+                    <i class="fas fa-trash-alt"></i>
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Bill_id })
+                </p>
+            </td>
+        </tr>
+    }
+
+</table>

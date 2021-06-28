@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MVC_cafe.Models.BillInfo>
+
+@{
+    ViewBag.Title = "Member_hoadon";
+    Layout = "~/Views/Shared/Layout_member.cshtml";
+}
+
+<style>
+    table, tr, th, td {
+        border: 1px solid #111;
+    }
+
+    tbody {
+        border-top: 2px solid #111;
+    }
+
+    a {
+        color: #fff;
+        font-size: 16px;
+    }
+</style>
+
+<p class="btn btn-default" style="background: #5a69fa;color:#fff">
+    <i class="fas fa-plus"></i>
+    @Html.ActionLink("Tạo mới", "Order")
+</p>
+<h2>Quản lý hóa đơn</h2>
+
+<div style="background:#fff;border-radius:7px;padding:10px">
+    <hr />
+
+    <table class="table">
+        <tr>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Tên món
+            </th>
+            <th>
+                gia tien
+            </th>
+            <th>
+                Tên bàn
+            </th>
+            <th>
+                Thành tiền
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            double total = Convert.ToDouble(item.count * item.Food.price);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.Food_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TableFood.TableFood_name)
+                </td>
+                <td>
+                    @total
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

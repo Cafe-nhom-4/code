@@ -1,0 +1,103 @@
+﻿@model MVC_cafe.Models.Account
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/File/CSS/style.css"/>
+</head>
+<body>
+    <div id="form_register">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+        <table class="form_register">
+            <tr>
+                <td class="form_title" colspan="2">Đăng Ký</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.UserName)</td>
+                <td>@Html.TextBoxFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if(ViewBag.error != null)
+                    {
+                        <span class="field-validation-error">@ViewBag.error</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.PassWord)</td>
+                <td>@Html.PasswordFor(m => m.PassWord)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.PassWord)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.FullName)</td>
+                <td>@Html.TextBoxFor(m => m.FullName)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.FullName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Address)</td>
+                <td>@Html.TextBoxFor(m => m.Address)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Phone)</td>
+                <td>@Html.TextBoxFor(m => m.Phone)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.Phone)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.idRole)</td>
+                <td>@Html.TextBoxFor(m => m.idRole)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.idRole)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.status)</td>
+                <td>@Html.TextBoxFor(m => m.status)</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ValidationMessageFor(m => m.status)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="btn btn-info" type="submit" value="Register" />
+                    <input class="btn btn-info" onclick="reset()" type="submit" value="Reset" />
+                    <a class="btn btn-info" href="@Url.Action("Index","Login")">Login</a>
+                </td>
+            </tr>
+        </table>
+        }
+    </div>
+    <script>
+        function reset() {
+            document.getElementById("form_register").reset();
+        }
+    </script>
+</body>
+</html>

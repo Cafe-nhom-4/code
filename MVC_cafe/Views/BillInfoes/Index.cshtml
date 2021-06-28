@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MVC_cafe.Models.BillInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+<style>
+    table, tr, th, td {
+        border: 1px solid #111;
+    }
+
+    tbody {
+        border-top: 2px solid #111;
+    }
+
+    a {
+        color: #fff;
+        font-size: 16px;
+    }
+</style>
+
+<p class="btn btn-default" style="background: #5a69fa;color:#fff">
+    <i class="fas fa-plus"></i>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<a class="btn btn-default" style="background: #5a69fa;color:#fff" href="@Url.Action("Info", "Bills")">Hóa đơn</a>
+    
+<h2>Quản lý hóa đơn</h2>
+
+<div style="background:#fff;border-radius:7px;padding:10px">
+    <hr />
+
+    <table class="table">
+        <tr>
+            <th>
+                Người tạo
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Tên món
+            </th>
+            <th>
+                gia tien
+            </th>
+            <th>
+                Tên bàn
+            </th>
+            <th>
+                Thành tiền
+            </th>
+            <th>
+                Thao tác
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            double total = Convert.ToDouble(item.count * item.Food.price);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.Food_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TableFood.TableFood_name)
+                </td>
+                <td>
+                    @total
+                </td>
+                <td>
+                    <p class="btn btn-primary" style="background: #2cc455;color:#fff!important">
+                        <i class="fas fa-edit"></i>
+                        @Html.ActionLink("Cập nhật", "Edit", new { id = item.BillInfo_id })
+                    </p> |
+                    <p class="btn btn-default" style="background: #f7c30f;color: #fff !important">
+                        <i class="fas fa-trash-alt"></i>
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.BillInfo_id })
+                    </p>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<MVC_cafe.Models.TableFood>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+<link rel="stylesheet" href="~/File/CSS/table.css" />
+<style>
+    body {
+        font-family: Arial;
+    }
+
+    .wrapper {
+        width: 70%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .wrapper_item {
+        cursor: pointer;
+        height: 80px;
+        background-color: aqua;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 30px;
+    }
+
+        .wrapper_item > p {
+            font-size: 20px;
+        }
+
+    .table_content {
+        width: 30%;
+        background: #808080;
+        height: 100%;
+    }
+
+    .table_form {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+</style>
+<div class="table_form">
+    <div class="wrapper">
+        @foreach (var item in Model)
+        {
+            <div id="x" class="wrapper_item">
+                <p>@Html.DisplayFor(modelItem => item.TableFood_name)</p>
+                <p>@Html.DisplayFor(modelItem => item.status)</p>
+            </div>
+        }
+    </div>
+    <div class="table_content" style="padding:15px;display:flex;justify-content:center;">
+        <table>
+            <tr style="height:100px">
+                <td style="color:#fff;font-size:20px">Order: </td>
+                <td>
+                    <input class="btn" list="drink" name="drink">
+                    <datalist id="drink">
+                        <option value="Cafe Sữa">
+                        <option value="Cafe Đá">
+                        <option value="NumberOne">
+                        <option value="Bò Húc">
+                        <option value="Cafe Nâu lắc">
+                    </datalist>
+                    <input class="btn btn-default" type="button" value="Thêm món" />
+                </td>               
+            </tr>
+            <tr style="height:100px">
+                <td style="color:#fff;font-size:20px">Số lượng:</td>
+                <td><input type="number" class="btn" /></td>
+            </tr>
+            <tr>
+                <td style="height:50px"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="y" class="bill" style="height:300px;width:100%;background:#fff; display:none">
+                        <div style="background:#fff;border-radius:7px;padding:10px">
+                            <h2>Hóa đơn theo bàn</h2>
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        Người tạo
+                                    </th>
+                                    <th>
+                                        Số lượng
+                                    </th>
+                                    <th>
+                                        Tên món
+                                    </th>
+                                    <th>
+                                        gia tien
+                                    </th>
+                                    <th>
+                                        Tên bàn
+                                    </th>
+                                    <th>
+                                        Thành tiền
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>admin</td>
+                                    <td>3</td>
+                                    <td>Bò húc</td>
+                                    <td>12000</td>
+                                    <td>bàn 1</td>
+                                    <td>36000</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            var btn = document.getElementById("x");
+            var bg = document.getElementById("y");
+
+            btn.onclick = function () {
+                bg.style.display = "block";
+            };
+
+        </script>
+    </div>
+</div>
+
+

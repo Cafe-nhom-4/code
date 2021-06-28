@@ -1,0 +1,114 @@
+﻿body {
+}
+
+header {
+    height: 55px;
+    background: #00915a;
+    color: #fff;
+    border: 1px solid #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+}
+
+.title {
+    height: 55px;
+    width: 80%;
+    border-right: 2px solid #fff;
+}
+
+    .title h1 {
+        font-family: Britannic;
+        text-align: center;
+    }
+
+.info {
+    width: 20%;
+    height: 55px;
+}
+
+    .info i {
+        margin-top: 15px;
+        display: flex;
+        font-size: 22px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info a {
+        float: right;
+        height: 20px;
+        width: 52px;
+        border-bottom: 2px solid #fff;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        margin-top: -8px;
+    }
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    height: 870px;
+    width: 20%;
+    background: #222b35;
+    border-right: 2px solid #fff;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    nav > h1 > a {
+        text-align: center;
+        font-size: 35px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+.nav-list {
+    list-style: none;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+    .nav-item > i {
+        font-size: 25px;
+        margin-right:8px;
+    }
+
+    .nav-item:hover {
+        background: #808080;
+        border-radius: 5px;
+    }
+
+.nav-text {
+    color: #fff !important;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.content {
+    padding: 20px;
+    box-sizing: border-box;
+    height: 870px;
+    width: 80%;
+    border: 1px solid #111;
+    background: #edf0f9;
+    background: url(~/File/Images/banghieucaphedep.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
